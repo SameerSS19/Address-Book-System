@@ -1,6 +1,7 @@
 package com.addressbook;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Scanner;
@@ -83,6 +84,25 @@ public class AddressBook
 	 * all functions are passes in main function to perform .
 	 * @param args
 	 */
+	
+	public static void deleteContact(ArrayList<String> Contact1)
+	{
+		Iterator itr = Contact1.iterator();
+		System.out.println("Enter value to delete");
+		Scanner input = new Scanner(System.in);
+		String deleteValue = input.nextLine();
+        while (itr.hasNext())
+        {
+            String x = (String)itr.next();
+            if (x.equals(deleteValue))
+                itr.remove();
+        }
+        for (String str : Contact1)
+        {
+            System.out.println(str + " "); 
+        }
+	}
+	
 	public static void main(String[] args) 
 	{
         System.out.println("Welcome in Address Book");
@@ -99,6 +119,9 @@ public class AddressBook
         	break;
         	case 2:
         		editContact(Contact1);
+        	break;
+        	case 3:
+        		deleteContact(Contact1);
         	break;
         	default:
         		System.out.print("Please enter the valid number : ");	
