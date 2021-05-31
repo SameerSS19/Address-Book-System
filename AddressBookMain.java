@@ -5,12 +5,14 @@ import java.util.Scanner;
 public class AddressBookMain 
 {
 	public ArrayList<Contact> contactbook = new ArrayList<>();
+    ArrayList<AddressBookList> addressBookNameList = new ArrayList<>();
     Scanner scan = new Scanner(System.in);
     public void addContact()
     {
     	
         System.out.println("Enter First Name"); 
         String first = scan.nextLine();      //scanning a firstname
+        duplicateCheck(first);
 
         System.out.println("Enter Last Name");
         String last = scan.nextLine();       //scanning a last name
@@ -128,6 +130,45 @@ public class AddressBookMain
                 System.out.println("please enter valid name");
         }
     }
+    
+    public void newAddressBook() //Entering the Address Book or Check list
+    {
+        System.out.println("Enter AddressBook Name");
+        String userInputBookName = scan.next();
+        AddressBookList addressbook = new AddressBookList(userInputBookName);
+        addressBookNameList.add(addressbook);
+        System.out.println("New Address Book Name is added to list");
+    }
+    
+    public void displayAddressBook()
+    {
+
+        System.out.println("Existing AddressBook Names are : ");
+
+        for (AddressBookList addressBookList : addressBookNameList)
+        {
+            System.out.println(addressBookList);
+        }
+    }
+
+    //checking the duplicate entries in contactBook
+    public void duplicateCheck(String first)
+    {
+    for (int k = 0; k < contactbook.size(); k++)
+    {
+        String contactName = contactbook.get(k).firstName;
+
+        if (first.equals(contactName))
+        {
+            System.out.println("This Person is Already Present");
+        }
+        else
+        {
+            System.out.println("You can Add this Person");
+            break;
+        }
+    }
+    }
 
     public static void main(String[] args)
     {
@@ -138,6 +179,8 @@ public class AddressBookMain
         System.out.println("2.Edit Contact");
         System.out.println("3.Display Contact");
         System.out.println("4.Delete Contact");
+        System.out.println("5.Add New Address Book");
+        System.out.println("6.Display New Address Book");
         System.out.println("5.Exit");
         int k=0;			// when we are choice the the cases is present 
         while(k==0)
@@ -160,6 +203,12 @@ public class AddressBookMain
                     address.deletePerson();
                     break;
                 case 5:
+                    address.newAddressBook();
+                    break;
+                case 6:
+                    address.displayAddressBook();
+                    break;
+                case 7:
                     System.out.println("Exit");
                     k = 1;
                     break;
