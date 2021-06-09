@@ -6,91 +6,95 @@ import java.util.Scanner;
 public class AddressBookMain {
 
 
-        public static List<HashMap<String,String>> usersList = new ArrayList<HashMap<String,String>>();
-        public static List<ArrayList<HashMap<String,String>>> state = new ArrayList<ArrayList<HashMap<String,String>>>();
-        // Create a Scanner object
-        public static Scanner sc = new Scanner(System.in);
-        //Instant Variable
-        public static String fName,lName;
-        public static String Address,city;
-        private static String isState;
-        public static String zip,phone;
-        public static String email;
+    public static List<HashMap<String, String>> usersList = new ArrayList<HashMap<String, String>>();
+    public static List<ArrayList<HashMap<String, String>>> state = new ArrayList<ArrayList<HashMap<String, String>>>();
+    // Create a Scanner object
+    public static Scanner sc = new Scanner(System.in);
+    //Instant Variable
+    public static String fName, lName;
+    public static String Address, city;
+    private static String isState;
+    public static String zip, phone;
+    public static String email;
 
-        //Take Input And Add To Contacts
-        public static String getUserInput()
-        {
+    //Take Input And Add To Contacts
+    public static String getUserInput() {
 
-            System.out.println("Enter first and last name:");
-            fName = sc.next();
-            lName = sc.next();
-            System.out.println("Enter Address:");
-            Address = sc.next();
-            System.out.println("Enter City:");
-            city = sc.next();
-            System.out.println("Enter state:");
-            isState = sc.next();
-            System.out.println("Enter zip:");
-            zip = sc.next();
-            System.out.println("Enter phone:");
-            phone = sc.next();
-            System.out.println("Enter email:");
-            email = sc.next();
-            // Add keys and values(like first name,last name etc)
-            HashMap<String,String> userInfo = new HashMap<>();
-            userInfo.put("First Name",fName);
-            userInfo.put("Last Name", lName);
-            userInfo.put("Address", Address);
-            userInfo.put("city", city);
-            userInfo.put("State", isState);
-            userInfo.put("Zip", zip);
-            userInfo.put("contact", phone);
-            userInfo.put("email_Id", email);
+        System.out.println("Enter first and last name:");
+        fName = sc.next();
+        lName = sc.next();
+        System.out.println("Enter Address:");
+        Address = sc.next();
+        System.out.println("Enter City:");
+        city = sc.next();
+        System.out.println("Enter state:");
+        isState = sc.next();
+        System.out.println("Enter zip:");
+        zip = sc.next();
+        System.out.println("Enter phone:");
+        phone = sc.next();
+        System.out.println("Enter email:");
+        email = sc.next();
+        // Add keys and values(like first name,last name etc)
+        HashMap<String, String> userInfo = new HashMap<>();
+        userInfo.put("First Name", fName);
+        userInfo.put("Last Name", lName);
+        userInfo.put("Address", Address);
+        userInfo.put("city", city);
+        userInfo.put("State", isState);
+        userInfo.put("Zip", zip);
+        userInfo.put("contact", phone);
+        userInfo.put("email_Id", email);
 
-            boolean userExist= false;
-            // Print keys
-            for(HashMap<String,String> user: usersList) {
-                String emailId = user.get("email_Id");
-                if(emailId.equalsIgnoreCase(email)) {
-                    userExist = true;
-                }
+        boolean userExist = false;
+        // Print keys
+        for (HashMap<String, String> user : usersList) {
+            String emailId = user.get("email_Id");
+            if (emailId.equalsIgnoreCase(email)) {
+                userExist = true;
             }
-            //if user is used adding userinfo
-            if(userExist) {
-            } else {
-                usersList.add(userInfo);
-
-            }
-
-            System.out.println("Do you want to add contact in address book (Y/N)");
-            return sc.next();
         }
-        //Main method
-        public static void main(String args[]) {
+        //if user is used adding userinfo
+        if (userExist) {
+        } else {
+            usersList.add(userInfo);
+
+        }
+
+        System.out.println("Do you want to add contact in address book (Y/N)");
+        return sc.next();
+    }
+
+    //Main method
+    public static void main(String args[]) {
         //Statement Asking a user if u want to add Contact and scan
         System.out.println("Do you want to add contact in address book (Y/N)");
         String userDecision = sc.next();
         //while is using user decision Yes
-        while(userDecision.equalsIgnoreCase("Y")) {
+        while (userDecision.equalsIgnoreCase("Y")) {
             userDecision = getUserInput();
         }
 
-        System.out.println("Number of record by city:");
-        // Output user input
-        System.out.println("Number of contacts in address book - " + usersList.size());
-
-        System.out.println("Enter a person a you want to search:");
-        String isCheck = sc.next();
+        //Search input to take user
+        System.out.println("Search by City or State:");
+        String isSearch = sc.next();
+        //Prints a Details adding a AddressBook
+        System.out.println("Details:");
         //Print keys
-        for( HashMap<String,String> user: usersList )
-        {
-            if(isCheck.equals(user.get("First Name")) )
-            {
-                System.out.println("This name present in the record:");
+        for (HashMap<String, String> user : usersList) {
+            if (isSearch.equals(user.get("city")) || isSearch.equals(user.get("State"))) {
+                System.out.println("Record details: ");
+                System.out.println("First Name : " + user.get("First Name"));
+                System.out.println("Last Name : " + user.get("Last Name"));
+                System.out.println("Address : " + user.get("Address"));
+                System.out.println("city : " + user.get("city"));
+                System.out.println("State : " + user.get("State"));
+                System.out.println("Zip : " + user.get("Zip"));
+                System.out.println("email_Id : " + user.get("email_Id"));
+                System.out.println("contact : " + user.get("contact"));
+
             }
         }
-
-
     }
-}
 
+}
