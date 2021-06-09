@@ -74,27 +74,35 @@ public class AddressBookMain {
         while (userDecision.equalsIgnoreCase("Y")) {
             userDecision = getUserInput();
         }
-
-        //Search input to take user
-        System.out.println("Search by City or State:");
-        String isSearch = sc.next();
-        //Prints a Details adding a AddressBook
-        System.out.println("Details:");
+        //Statement Record
+        System.out.println("Number of record by city:");
+        // Output user input
+        System.out.println("Number of contacts in address book - " + usersList.size());
+        System.out.println("Enter first name you want to search:");
+        String isCheck = sc.next();
+        // Set Initial Values
+        int countDelhi = 0;
+        int countGhaziabad = 0;
         //Print keys
-        for (HashMap<String, String> user : usersList) {
-            if (isSearch.equals(user.get("city")) || isSearch.equals(user.get("State"))) {
-                System.out.println("Record details: ");
-                System.out.println("First Name : " + user.get("First Name"));
-                System.out.println("Last Name : " + user.get("Last Name"));
-                System.out.println("Address : " + user.get("Address"));
-                System.out.println("city : " + user.get("city"));
-                System.out.println("State : " + user.get("State"));
-                System.out.println("Zip : " + user.get("Zip"));
-                System.out.println("email_Id : " + user.get("email_Id"));
-                System.out.println("contact : " + user.get("contact"));
+        for( HashMap<String,String> user: usersList )
+        {
+            if(isCheck.equals(user.get("First Name")) && "Delhi".equals(user.get("city")))
+            {
+                //Cont
+                countDelhi ++;
+                //Output User Input
+                System.out.println("Display the number of person will be present in Delhi "+countDelhi);
+            }
 
+            if ( isCheck.equals(user.get("First Name")) && "Ghaziabad".equals(user.get("city")))
+            {
+                //Count
+                countGhaziabad ++;
+                //Output User Input
+                System.out.println("Display the number of person will be present in Ghaziabad"+countGhaziabad);
             }
         }
+        //Displaying the Number of Count Present in City Or State
+        System.out.println("Displaying count based on number of city or state:");
     }
-
 }
