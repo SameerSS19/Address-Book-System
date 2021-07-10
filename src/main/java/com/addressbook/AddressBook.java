@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 public class AddressBook {
     public static Scanner sc = new Scanner(System.in);
-    public ArrayList<ContactDetails> contactList;
+    public ArrayList<ContactDetails> contactList ;
     public HashMap<String, ArrayList<ContactDetails>> personByState;
     public HashMap<String, ArrayList<ContactDetails>> personByCity;
 
@@ -13,7 +13,6 @@ public class AddressBook {
         personByState = new HashMap<String, ArrayList<ContactDetails>>();
         contactList = new ArrayList<>();
     }
-
     public ArrayList<ContactDetails> addContactDetails() {
         System.out.println("Enter the contact details:");
         System.out.println("Enter first Name:");
@@ -35,18 +34,17 @@ public class AddressBook {
         String zip = sc.next();
         ContactDetails contactDetails = new ContactDetails(firstName, lastName, address, city, state, email, phoneNumber, zip);
         contactList.add(contactDetails);
-        if (!personByState.containsKey(state)) {
-            personByState.put(state, new ArrayList<ContactDetails>());
+        if(!personByState.containsKey(state)){
+            personByState.put(state,new ArrayList<ContactDetails>());
         }
         personByState.get(state).add(contactDetails);
 
-        if (!personByCity.containsKey(city)) {
-            personByCity.put(city, new ArrayList<ContactDetails>());
+        if(!personByCity.containsKey(city)){
+            personByCity.put(city,new ArrayList< ContactDetails>());
         }
         personByCity.get(city).add(contactDetails);
 
         return contactList;
-
     }
 
     public boolean editContactDetails(String Name) {
@@ -73,22 +71,25 @@ public class AddressBook {
                         String firstName = sc.next();
                         contact.setFirstName(firstName);
                         break;
+
                     case 2:
                         System.out.println("Enter last name: ");
                         String lastName = sc.next();
                         contact.setLastName(lastName);
                         break;
+
                     case 3:
                         System.out.println("Enter Address: ");
                         String address = sc.next();
                         contact.setAddress(address);
                         break;
 
-                    case 4:
+                case 4:
                         System.out.println("Enter City: ");
                         String city = sc.next();
                         contact.setCity(city);
                         break;
+
                     case 5:
                         System.out.println("Enter State: ");
                         String state = sc.next();
@@ -100,7 +101,8 @@ public class AddressBook {
                         String email = sc.next();
                         contact.setZip(email);
                         break;
-                    case 7:
+
+                case 7:
                         System.out.println("Enter Phone Number:");
                         String phoneNumber = sc.next();
                         contact.setPhoneNumber(phoneNumber);
@@ -143,19 +145,19 @@ public class AddressBook {
     }
 
     public void getPersonNameByState(String State) {
-        List<ContactDetails> list = contactList.stream().filter(contactName -> contactName.getState().equals(State)).collect(Collectors.toList());
-        for (ContactDetails contact : list) {
-            System.out.println("First Name: " + contact.getFirstName());
-            System.out.println("Last Name: " + contact.getLastName());
+        List<ContactDetails> list  = contactList.stream().filter(contactName ->contactName.getState().equals(State)).collect(Collectors.toList());
+        for(ContactDetails contact: list){
+            System.out.println("First Name: "+contact.getFirstName());
+            System.out.println("Last Name: "+contact.getLastName());
         }
 
     }
 
     public void getPersonNameByCity(String cityName) {
-        List<ContactDetails> list = contactList.stream().filter(contactName -> contactName.getCity().equals(cityName)).collect(Collectors.toList());
-        for (ContactDetails contact : list) {
-            System.out.println("First Name: " + contact.getFirstName());
-            System.out.println("Last Name: " + contact.getLastName());
+        List<ContactDetails> list  = contactList.stream().filter(contactName ->contactName.getCity().equals(cityName)).collect(Collectors.toList());
+        for(ContactDetails contact: list){
+            System.out.println("First Name: "+contact.getFirstName());
+            System.out.println("Last Name: "+contact.getLastName());
         }
     }
 }
