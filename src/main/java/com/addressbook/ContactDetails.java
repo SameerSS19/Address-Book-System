@@ -1,10 +1,28 @@
 package com.addressbook;
 
-public class ContactDetails {
-    private String firstName, lastName, address, city, state, email, zip, phoneNumber ;
+import com.opencsv.bean.CsvBindByName;
 
-    public ContactDetails(String firstName, String lastName, String address, String city, String state,
-                          String email, String phoneNumber, String zip) {
+public class ContactDetails {
+
+    @CsvBindByName(column = "FirstName")
+    private String firstName;
+    @CsvBindByName(column = "LastName")
+    private String lastName;
+    @CsvBindByName(column = "Address")
+    private String address;
+    @CsvBindByName(column = "City")
+    private String city;
+    @CsvBindByName(column = "State")
+    private String state;
+    @CsvBindByName(column = "Email")
+    private String email;
+    @CsvBindByName(column = "ZipName")
+    private String zip;
+    @CsvBindByName(column = "PhoneNumber")
+    private String phoneNumber;
+
+    public ContactDetails(String firstName, String lastName, String address, String city, String state, String email,
+                          String phoneNumber, String zip) {
         setFirstName(firstName);
         setLastName(lastName);
         setAddress(address);
