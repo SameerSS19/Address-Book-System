@@ -1,0 +1,2 @@
+ContactDetails [firstName=Vogel, lastName=Bryan, address=Newyork, city=Alaska, state=States, email=vogue@gmail.com, zip=232323, phoneNumber=5659865955]
+ContactDetails [firstName=Russel, lastName=Andre, address=Wi, city=Jabong, state=Stlucia, email=drerus@gmail.com, zip=443433, phoneNumber=34349345454]

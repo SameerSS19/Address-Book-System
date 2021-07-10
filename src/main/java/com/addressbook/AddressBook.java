@@ -1,5 +1,9 @@
 package com.addressbook;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 public class AddressBook {
@@ -13,6 +17,30 @@ public class AddressBook {
         personByState = new HashMap<String, ArrayList<ContactDetails>>();
         contactList = new ArrayList<>();
     }
+
+    public void writeData(String addressBookName) {
+        StringBuffer empBuffer = new StringBuffer();
+        contactList.forEach(employee -> {
+            String employeeDataString = employee.toString().concat("\n");
+            empBuffer.append(employeeDataString);
+        });
+        try {
+            Files.write(Paths.get("addressBook-file.txt"), empBuffer.toString().getBytes());
+
+        } catch (IOException e) {
+
+        }
+    }
+
+    public void readData(String readAddressBookName) {
+        try {
+            Files.lines(new File("addressBook-file.txt").toPath()).map(line -> line.trim()).forEach(line -> System.out.println(line));
+
+        } catch (IOException e) {
+
+        }
+    }
+
     public ArrayList<ContactDetails> addContactDetails() {
         System.out.println("Enter the contact details:");
         System.out.println("Enter first Name:");
@@ -40,7 +68,7 @@ public class AddressBook {
         personByState.get(state).add(contactDetails);
 
         if(!personByCity.containsKey(city)){
-            personByCity.put(city,new ArrayList< ContactDetails>());
+            personByCity.put(city,new ArrayList<ContactDetails>());
         }
         personByCity.get(city).add(contactDetails);
 
@@ -72,19 +100,19 @@ public class AddressBook {
                         contact.setFirstName(firstName);
                         break;
 
-                    case 2:
+                case 2 :
                         System.out.println("Enter last name: ");
                         String lastName = sc.next();
                         contact.setLastName(lastName);
                         break;
 
-                    case 3:
+                    case 3 :
                         System.out.println("Enter Address: ");
                         String address = sc.next();
                         contact.setAddress(address);
                         break;
 
-                case 4:
+                    case 4:
                         System.out.println("Enter City: ");
                         String city = sc.next();
                         contact.setCity(city);
@@ -96,13 +124,13 @@ public class AddressBook {
                         contact.setState(state);
                         break;
 
-                    case 6:
+                    case 6 :
                         System.out.println("Enter Email: ");
                         String email = sc.next();
                         contact.setZip(email);
                         break;
 
-                case 7:
+                    case 7:
                         System.out.println("Enter Phone Number:");
                         String phoneNumber = sc.next();
                         contact.setPhoneNumber(phoneNumber);

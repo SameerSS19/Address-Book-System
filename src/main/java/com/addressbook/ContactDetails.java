@@ -72,6 +72,13 @@ public class ContactDetails {
         return zip;
     }
 
+    @Override
+    public String toString() {
+        return "ContactDetails [firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + ", city="
+                + city + ", state=" + state + ", email=" + email + ", zip=" + zip + ", phoneNumber=" + phoneNumber
+                + "]";
+    }
+
     public void setZip(String zip) {
         this.zip = zip;
     }
