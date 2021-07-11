@@ -1,16 +1,22 @@
 package com.addressbook;
 
+import java.time.LocalDate;
+import java.util.Objects;
+
 public class Contact {
+    int id;
     String firstName;
     String lastName;
     String address;
     String city;
     String state;
     String email;
-    long mobileNo;
+    String mobileNo;
     int zip;
+    LocalDate entryDate;
 
-    public Contact(String firstName, String lastName, String address, String city, String state, String email, long mobileNo, int zip)
+
+    public Contact( String firstName, String lastName, String address, String city, String state, String email, String mobileNo, int zip)
     {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -20,6 +26,44 @@ public class Contact {
         this.email = email;
         this.mobileNo = mobileNo;
         this.zip = zip;
+
+    }
+    public Contact(String firstName, String lastName, String address, String city, String state, String email, String mobileNo, int zip, LocalDate entryDate)
+    {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address= address;
+        this.city = city;
+        this.state = state;
+        this.email = email;
+        this.mobileNo = mobileNo;
+        this.zip = zip;
+        this.entryDate = entryDate;
+
+    }
+
+    public Contact(int id, String firstName, String lastName, String address, String city, String state, int zip, String mobileNo, String email, LocalDate entryDate)
+
+    {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address= address;
+        this.city = city;
+        this.state = state;
+        this.zip = zip;
+        this.mobileNo = mobileNo;
+        this.email = email;
+        this.entryDate = entryDate;
+
+    }
+    public int getId()
+    {
+        return id;
+    }
+    public void setId(int id)
+    {
+        this.id = id;
     }
     public String getFirstName()
     {
@@ -68,11 +112,11 @@ public class Contact {
     {
         this.email = email;
     }
-    public long getMobileNo()
+    public String getMobileNo()
     {
         return mobileNo;
     }
-    public void setMobileNo(long mobileNo)
+    public void setMobileNo(String mobileNo)
     {
         this.mobileNo = mobileNo;
     }
@@ -84,9 +128,26 @@ public class Contact {
     {
         this.zip = zip;
     }
-    public String toString()
+    public LocalDate getEntryDate()
     {
-        return "Contact [firstName=" + firstName + ", lastName=" + lastName + ", Address="+address+", city=" + city
-                + ", state=" + state + ", pincode=" + zip + ", MobileNo=" + mobileNo + "]" + "\n";
+        return entryDate;
+    }
+    public void setEntryDate(LocalDate entryDate)
+    {
+        this.entryDate = entryDate;
+    }
+    public String toString()
+
+    {
+        return "Contact [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", Address="+address+", city=" + city
+                + ", state=" + state + ", pincode=" + zip + ", MobileNo=" + mobileNo +  "]" + "\n";
+    }
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) return true;
+        if (!(o instanceof Contact)) return false;
+        Contact person = (Contact) o;
+        return id == person.id && Objects.equals(firstName, person.firstName) && Objects.equals(lastName, person.lastName) && Objects.equals(address, person.address) && Objects.equals(city, person.city) && Objects.equals(state, person.state) && Objects.equals(zip, person.zip) && Objects.equals(mobileNo, person.mobileNo) && Objects.equals(email, person.email) && Objects.equals(entryDate, person.entryDate);
     }
 }

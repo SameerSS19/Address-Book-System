@@ -9,6 +9,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class AdddressBookIO {
+
     static AdddressBookIO addressbook = new AdddressBookIO();
     static Scanner scan = new Scanner(System.in);
 
@@ -82,5 +83,6 @@ public class AdddressBookIO {
             return false;
         }
     }
+
 
 }
