@@ -1,0 +1,10 @@
+Contact [firstName=Sameer, lastName=Kassar, Address=Kailla Bhatta, city=Ghaziabad, state=Maharashtra, pincode=452365, MobileNo=8149240833]
+
+Contact [firstName=Shakiv, lastName=Ali, Address=Milak, city=Pune, state=Rampur, pincode=748563, MobileNo=8149240833]
+
+Contact [firstName=Chandrdeep, lastName=Kumar, Address=Puna, city=bhopal, state=Delhi, pincode=635241, MobileNo=8149420833]
+
+Contact [firstName=Afsar, lastName=Saifi, Address=Sambhal, city=Amravati, state= Bihar, pincode=887752, MobileNo=9149240833]
+
+Contact [firstName=Naeem, lastName=Ahmad, Address=Raj Nagar, city=Akola, state=Bihar, pincode=663322, MobileNo=8149240844]
+
